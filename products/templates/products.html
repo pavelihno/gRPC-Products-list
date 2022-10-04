@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super.head }}
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center row gy-5" style="margin: 0.1% 0% 0 2%;">
+    <h1>Products list</h1>
+    {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{% if product.amount > 1 %}{{ product.amount }} PCs{% elif product.amount == 1 %}{{ product.amount }} PC{% endif %}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{% if product.is_bought %}bought{% else %}not bought{% endif %}</h6>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
